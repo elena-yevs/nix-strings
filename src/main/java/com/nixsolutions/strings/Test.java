@@ -18,7 +18,7 @@ public class Test {
     }
 
     private void toCamelCase() {
-        util.toCamelCase("hEllo, w oRL d J Av a");
+        util.toCamelCase("hEllo, woRLd JAva");
     }
 
     private void alphabet() {
