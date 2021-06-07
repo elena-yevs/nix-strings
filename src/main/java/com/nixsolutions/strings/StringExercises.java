@@ -88,12 +88,10 @@ public class StringExercises implements StringUtils {
         System.out.println("Converting a string to CamelCase ..." + str);
         //LOG.debug("Converting a string to CamelCase ...", str);
         String input = str;
-        String spaceRemove = input.replaceAll("\\s", "");
-        String[] Res = spaceRemove.split("");
-        String output1 = valueOf(Res);
-        String output = output1.substring(0, 1).toUpperCase();
-        // String upperCase = spaceRemove.toUpperCase();
-        // String output = upperCase.substring(1, 4).toLowerCase()+upperCase.substring(7, 10).toLowerCase()+upperCase.substring(12, 14).toLowerCase();
+        String symbolsRemove = input.replaceAll("[^a-zA-Z ]", ""); //удалит все небуквенные символы
+        String spaceRemove = symbolsRemove.replaceAll("\\s", ""); //удалить пробелы
+        String lowerCase = spaceRemove.toLowerCase(); //H
+        String output = lowerCase.substring(0, 1).toUpperCase() + lowerCase.substring(1); //Helloworldjava
         System.out.println("Converted: " + output);
         //LOG.debug("Converted: {}.", output);
         return output;

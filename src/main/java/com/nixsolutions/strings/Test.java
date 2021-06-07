@@ -26,7 +26,7 @@ public class Test {
     }
 
     private void convertIp() {
-        util.convertIp("1.1.1.1");
+        util.convertIp("192.168.111.111");
     }
 
     private void uri2Array() {
@@ -37,8 +37,8 @@ public class Test {
         Test show = new Test();
         show.fromCamelCase();
         show.toCamelCase();
-        show.alphabet();
-        show.uri2Array();
-        show.convertIp();
+        //show.alphabet();
+        //show.uri2Array();
+        // show.convertIp();
     }
 }
