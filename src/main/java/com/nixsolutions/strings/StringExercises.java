@@ -83,6 +83,16 @@ public class StringExercises implements StringUtils {
         return new String[0];
     }
 
+    /**
+     * Преобразует словосочетание в CamelCase независимо от оригинального регистра букв.
+     *
+     * <p>Регистр первой остается нетронутым.
+     *
+     * <p>Разделителем слов служат пробелы и запятые.
+     *
+     * @param str словосочетание в разном регисте
+     * @return словосочетание в CamelCase ил null, если строка пустая
+     */
     @Override
     public String toCamelCase(String str) {
         System.out.println("Converting a string to CamelCase ..." + str);
