@@ -25,11 +25,10 @@ public class StringExercises implements StringUtils {
         String input = ip;
         String regex = ("(^[0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])$");
         boolean condition = input.matches(regex);
-        if(condition !=true){
+        if (condition != true) {
             String output = input.replaceAll("...", "000.");
             System.out.println("result " + output);
-        }
-        else{
+        } else {
             System.out.println(input.matches(regex) + input);
         }
 

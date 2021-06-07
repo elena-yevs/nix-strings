@@ -16,20 +16,22 @@ public class Test {
     private void fromCamelCase() {
         util.fromCamelCase("HelloWORLDJAVA");
     }
+
     private void toCamelCase() {
         util.toCamelCase("hEllo, w oRL d J Av a");
     }
 
-    private void alphabet(){
+    private void alphabet() {
         util.alphabet();
     }
 
-    private void convertIp(){
+    private void convertIp() {
         util.convertIp("1.1.1.1");
     }
-     private void uri2Array(){
+
+    private void uri2Array() {
         util.uri2Array("https://localhost:8080/prodpat/admin/page1");
-     }
+    }
 
     public static void main(String[] args) {
         Test show = new Test();
