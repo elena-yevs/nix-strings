@@ -1,18 +1,20 @@
 package com.nixsolutions.strings;
 
 
-import com.nixsolutions.strings.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Character.toLowerCase;
 import static java.lang.Character.toUpperCase;
-import static java.lang.String.valueOf;
+import static java.lang.String.format;
 
 
 public class StringExercises implements StringUtils {
+    private static final int IP_OCTET_AMOUNT = 4;
+    private static final int ALPHABET_LENGTH = 26;
     private static final Logger LOG = LogManager.getLogger(StringExercises.class);
 
     @Override
@@ -22,19 +24,22 @@ public class StringExercises implements StringUtils {
 
     @Override
     public String convertIp(String ip) {
-        String input = ip;
-        String regex = ("(^[0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])(\\s|-|.)([0-9])([0-9])([0-9])$");
-        boolean condition = input.matches(regex);
-        if (condition != true) {
-            String output = input.replaceAll("...", "000.");
-            System.out.println("result " + output);
-        } else {
-            System.out.println(input.matches(regex) + input);
+        Pattern pattern = Pattern.compile(
+                "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$"
+        );
+        Matcher matcher = pattern.matcher(ip);
+        if (!matcher.matches()) {
+            return null;
         }
-
-        return null;
-
-
+        int[] octet = new int[IP_OCTET_AMOUNT];
+        for (int g = 1; g <= IP_OCTET_AMOUNT; g++) {
+            String octetStr = matcher.group(g);
+            octet[g - 1] = Integer.parseInt(octetStr);
+        }
+        return format("%03d.%03d.%03d.%03d", octet[0], octet[1], octet[2], octet[3]);
     }
 
     /**
@@ -46,8 +51,8 @@ public class StringExercises implements StringUtils {
     public StringBuilder alphabet() {
         String registr = "";
         //LOG.debug("Setting the alphabet in a different case ...");
-        char[] alpha = new char[26];
-        for (int i = 0; i < 26; i++) {
+        char[] alpha = new char[ALPHABET_LENGTH];
+        for (int i = 0; i < ALPHABET_LENGTH; i++) {
             alpha[i] = (char) (97 + i);
         }
         for (int i = 0; i < 26; i++) {
@@ -109,7 +114,7 @@ public class StringExercises implements StringUtils {
         }
         String symbolsRemove = capitalLetter.replaceAll("[^a-zA-Z ]", ""); //удалит все небуквенные символы
         String output = symbolsRemove.replaceAll("\\s", ""); //удалить пробелы
-        System.out.println("output " + output);
+        System.out.println("Converted: " + output);
         if (str == null) {
             return null;
         }

@@ -26,7 +26,8 @@ public class Test {
     }
 
     private void convertIp() {
-        util.convertIp("192.168.111.111");
+        String s = util.convertIp("192.168.0.1");
+        System.out.println(s);
     }
 
     private void uri2Array() {
@@ -35,10 +36,10 @@ public class Test {
 
     public static void main(String[] args) {
         Test show = new Test();
-        show.fromCamelCase();
-        show.toCamelCase();
-        //show.alphabet();
+       // show.fromCamelCase();
+        //show.toCamelCase();
+        show.alphabet();
         //show.uri2Array();
-        // show.convertIp();
+        show.convertIp();
     }
 }
